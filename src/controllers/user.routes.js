@@ -24,7 +24,8 @@ export const getUser = async (req, res) => {
 //eliminar un usuario por id
 export const delUser = async (req, res) => {
   try {
-    const response = await Users.findByIdAndDelete(req.body.user_id);
+    const { id } = req.params;
+    const response = await Users.findByIdAndDelete(id);
     res.json(response);
   } catch (error) {
     res.json(error);
