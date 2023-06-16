@@ -1,19 +1,9 @@
 import mongoose from "mongoose";
-import { PORT_DB } from "./config.js";
-const uri = `mongodb://34.199.33.217:${PORT_DB}/db_Nition`;
+const uri = `mongodb://34.199.33.217:27017/db_Nition`;
 
-mongoose.connect(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-mongoose.connection.on("open", (_) => {
-  console.log("Database is connected");
-});
-
-mongoose.connection.on("error", (err) => {
-  console.log(err);
-});
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+.then(() => console.log('Conectado a MongoDB'))
+.catch(error => console.error('Error al conectar a MongoDB:', error));
 
 export default mongoose;
 
